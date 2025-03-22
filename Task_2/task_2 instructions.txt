@@ -1,0 +1,23 @@
+# build and push docker images
+1. cd server
+2. docker build -t 313733172/task_2_server .
+3. docker build -t 313733172/task_2_client .
+4. docker push 313733172/task_2_client
+5. docker push 313733172/task_2_server
+
+
+
+
+# pull images from docker hub 
+1. https://labs.play-with-docker.com/
+2. Create instance 
+3. docker login
+     login: 313733172
+    pass:  **********
+4. docker pull 313733172/task_2_server
+5. docker pull 313733172/task_2_client
+6. docker network create my-net
+7. docker run -d --network my-net --name task_2_server -it -p 5000 --rm 313733172/task_2_server 
+8. docker run   -it --network my-net -p 5000 --rm 313733172/task_2_client
+
+

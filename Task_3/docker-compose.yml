@@ -1,0 +1,39 @@
+# set docekr compose  version
+version: "3"
+
+# define services
+services:
+
+  server:
+    build: server/
+    image: 313733172/task_3_server
+    command: python ./server.py
+
+    ports:
+      - 5000:80
+
+    networks:
+      - my-net
+
+  client:
+
+    build: client/
+    image: 313733172/task_3_client
+
+    command: python ./client.py
+
+    ports:
+     - 5001:80
+
+    networks:
+      - my-net
+
+    # runs after server
+    depends_on:
+      - server
+
+
+# common server
+networks:
+  my-net:
+    driver: bridge
